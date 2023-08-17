@@ -33,18 +33,20 @@
     // Obtener una referencia a la base de datos Firestore
     const db = firebase.firestore();
 
+  auth.signInWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    console.log('Usuario autenticado:', user);
+  })
+  .catch((error) => {
+    console.log('Error al iniciar sesión:', error);
+  });
 
 
-    function registrarUsuario(email,password) {
-    auth.createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log('Usuario registrado:', user);
-      })
-      .catch((error) => {
-        console.log('Error al registrar usuario:', error);
-      });
-  }
+
+
+    
+
     // Consulta a una colección y muestra los datos
     const collectionRef = db.collection('Prueba1');
     collectionRef.get().then((querySnapshot) => {
