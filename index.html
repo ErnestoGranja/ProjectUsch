@@ -33,20 +33,9 @@
     // Obtener una referencia a la base de datos Firestore
     const db = firebase.firestore();
 
-    // Consulta a una colección y muestra los datos
-    const collectionRef = db.collection('Prueba1');
-    collectionRef.get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id, ' => ', doc.data());
-      });
-    }).catch((error) => {
-      console.log('Error obteniendo documentos:', error);
-    });
 
 
-
-
-     function registrarUsuario(email,password) {
+    function registrarUsuario(email,password) {
     auth.createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -56,6 +45,16 @@
         console.log('Error al registrar usuario:', error);
       });
   }
+    // Consulta a una colección y muestra los datos
+    const collectionRef = db.collection('Prueba1');
+    collectionRef.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, ' => ', doc.data());
+      });
+    }).catch((error) => {
+      console.log('Error obteniendo documentos:', error);
+    });
+     
   </script>
 
 </body>
