@@ -34,7 +34,7 @@
     const db = firebase.firestore();
 
     // Consulta a una colección y muestra los datos
-    const collectionRef = db.collection('nombreDeTuColeccion');
+    const collectionRef = db.collection('Prueba1');
     collectionRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         console.log(doc.id, ' => ', doc.data());
