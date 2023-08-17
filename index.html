@@ -1,1 +1,52 @@
-<h1>hola<h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta a Firebase Firestore</title>
+</head>
+<body>
+  <h1>Consulta a Firebase Firestore</h1>
+
+  <!-- Firebase Firestore Config -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-firestore.js"></script>
+  
+  <!-- Tu configuración de Firebase aquí -->
+  <script>
+    // Configurar la conexión con Firebase
+    const firebaseConfig = {
+      apiKey: 'TU_API_KEY',
+      authDomain: 'TU_AUTH_DOMAIN',
+      projectId: 'TU_PROJECT_ID',
+      storageBucket: 'TU_STORAGE_BUCKET',
+      messagingSenderId: 'TU_MESSAGING_SENDER_ID',
+      appId: 'TU_APP_ID'
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Función para consultar y obtener el campo "nombre" de un documento
+    function obtenerCampoNombre(documentID) {
+      const db = firebase.firestore();
+      const docRef = db.collection('nombreDeTuColeccion').doc(documentID);
+
+      docRef.get().then((doc) => {
+        if (doc.exists) {
+          const data = doc.data(); // Obtener todos los campos del documento
+          const nombre = data.nombre; // Acceder al campo "nombre"
+          console.log('Nombre:', nombre);
+        } else {
+          console.log('Documento no encontrado.');
+        }
+      }).catch((error) => {
+        console.log('Error obteniendo el documento:', error);
+      });
+    }
+
+    // Llamar a la función al cargar la página
+    window.onload = function() {
+      obtenerCampoNombre('ID_DEL_DOCUMENTO_A_CONSULTAR');
+    };
+  </script>
+</body>
+</html>
