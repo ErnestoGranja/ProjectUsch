@@ -42,6 +42,23 @@
     }).catch((error) => {
       console.log('Error obteniendo documentos:', error);
     });
+
+
+
+
+     function registrarUsuario() {
+    const email = 'nuevo@email.com'; // Cambia esto con el correo electrónico del usuario
+    const password = 'contraseña123'; // Cambia esto con la contraseña del usuario
+
+    auth.createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log('Usuario registrado:', user);
+      })
+      .catch((error) => {
+        console.log('Error al registrar usuario:', error);
+      });
+  }
   </script>
 
 </body>
