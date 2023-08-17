@@ -46,10 +46,7 @@
 
 
 
-     function registrarUsuario() {
-    const email = 'nuevo@email.com'; // Cambia esto con el correo electrónico del usuario
-    const password = 'contraseña123'; // Cambia esto con la contraseña del usuario
-
+     function registrarUsuario(email,password) {
     auth.createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
